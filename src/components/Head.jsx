@@ -56,7 +56,7 @@ const Head = () => {
                 className="flex items-center justify-center h-full mr-2"
               >
                 <img
-                  src="/public/amazon-logo-2.webp"
+                  src="/amazon-logo-2.webp"
                   width={32}
                   height={32}
                   alt="amazon-logo"
@@ -167,7 +167,7 @@ const Head = () => {
                 style={{ marginTop: "8px", marginBottom: "4px" }}
               >
                 <img
-                  src="/public/amazon-logo-2.webp"
+                  src="/amazon-logo-2.webp"
                   width={150}
                   height={150}
                   alt="amazon-logo"
