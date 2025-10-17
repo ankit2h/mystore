@@ -25,7 +25,7 @@ export default function useMultipleSvgMessages(svgidArray: string[]): void {
     }
     Promise.all(
       svgidArray.map((svgid: string) =>
-        fetch(`https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai/svg/messages/${svgid}?userid=${userid}`)
+        fetch(`https://mystore-245577333791.asia-south1.run.app/api/v1/ai/svg/messages/${svgid}?userid=${userid}`)
           .then((res) => res.json())
           .then((data) => ({ svgid, messages: data.messages || [] }))
           .catch(() => ({ svgid, messages: [] }))

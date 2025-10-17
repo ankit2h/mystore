@@ -15,7 +15,7 @@ const usePages = (): UsePagesResult => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://my-backend-app-245577333791.us-central1.run.app/api/link")
+      .get(" https://mystore-245577333791.asia-south1.run.app/api/link")
       .then((res) => {
         setPages(res.data);
         setError(null);

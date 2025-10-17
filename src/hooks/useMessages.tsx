@@ -5,7 +5,7 @@ import { setMessages } from "../redux/sideSlice";
 import toast from "react-hot-toast";
 
 // Backend base URL - adjust if your API is hosted elsewhere
-const BACKEND_BASE = "https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai";
+const BACKEND_BASE = " https://mystore-245577333791.asia-south1.run.app/api/v1/ai";
 
 /**
  * Hook to load all messages for the current user and dump them into the Redux store

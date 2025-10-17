@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Bot, User, Send, Home } from "lucide-react";
+import { Bot,Send } from "lucide-react";
 import useAskModel from "../hooks/useChatAsk";
 import useMessages from "../hooks/useMessages";
 import { useSelector } from "react-redux";
@@ -10,6 +10,15 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
+import { setSidebar } from "../redux/sideSlice";
+import { useDispatch } from "react-redux";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+  SignOutButton,
+} from "@clerk/clerk-react";
 
 interface Message {
   id: string;
@@ -19,6 +28,11 @@ interface Message {
 }
 
 const Chat = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setSidebar(false));
+  }, [dispatch]);
   // trigger loading messages into the store (hook runs fetch on mount)
   useMessages();
 
@@ -126,8 +140,8 @@ const Chat = () => {
 
   return (
     <div className="flex flex-col h-screen bg-background ">
-  {/* Messages Area (leave space for fixed header) */}
-  <div className="flex-1 overflow-y-auto pt-[130px]">
+      {/* Messages Area (leave space for fixed header) */}
+      <div className="flex-1 overflow-y-auto pt-[130px]">
         <div className="container mx-auto px-4 py-6 max-w-4xl">
           <div className="space-y-6">
             {messages.map((message) => (
@@ -171,8 +185,13 @@ const Chat = () => {
                   </p>
                 </div>
                 {message.role === "user" && (
-                  <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <User className="w-4 h-4 text-secondary-foreground" />
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <SignedIn>
+                      <div className="w-4 h-4 text-secondary-foreground">
+                        <UserButton />
+                      </div>
+                    </SignedIn>
+                    {/* <User className="w-4 h-4 text-secondary-foreground" /> */}
                   </div>
                 )}
               </div>

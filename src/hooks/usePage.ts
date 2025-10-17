@@ -9,7 +9,7 @@ const usePage = (link: string): void => {
     if (!link) return;
     axios
       .get(
-        `https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai/link/${link}`
+        ` https://mystore-245577333791.asia-south1.run.app/api/v1/ai/link/${link}`
       )
       .then((res) => {
         if (Array.isArray(res.data)) {
@@ -24,7 +24,7 @@ const usePage = (link: string): void => {
       });
     axios
       .get(
-        `https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai/front/${link}`
+        ` https://mystore-245577333791.asia-south1.run.app/api/v1/ai/front/${link}`
       )
       .then((res) => {
         if (Array.isArray(res.data)) {

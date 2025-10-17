@@ -5,15 +5,23 @@ import { addUser, clearUser } from "./redux/sideSlice";
 
 // Client-side UUID generator with fallback
 function generateUUID() {
-  if (typeof crypto !== "undefined" && typeof (crypto as any).randomUUID === "function") {
+  if (
+    typeof crypto !== "undefined" &&
+    typeof (crypto as any).randomUUID === "function"
+  ) {
     // @ts-ignore
     return (crypto as any).randomUUID();
   }
   // fallback simple UUID (not RFC-perfect but acceptable client-side)
-  return 'u_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 9);
+  return (
+    "u_" +
+    Date.now().toString(36) +
+    "_" +
+    Math.random().toString(36).slice(2, 9)
+  );
 }
 
-const CREATE_USER_ENDPOINT = "https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai/create-user"; // imaginary endpoint to create user doc
+const CREATE_USER_ENDPOINT = " https://mystore-245577333791.asia-south1.run.app/api/v1/ai/create-user"; // imaginary endpoint to create user doc
 
 const UserTracker = () => {
   const dispatch = useDispatch();
@@ -21,7 +29,15 @@ const UserTracker = () => {
 
   useEffect(() => {
     // parse cookie for userId
-    const match = document.cookie.split(";").map(c => c.trim()).find(c => c.startsWith("userId=") || c.startsWith("userID=") || c.startsWith("userid="));
+    const match = document.cookie
+      .split(";")
+      .map((c) => c.trim())
+      .find(
+        (c) =>
+          c.startsWith("userId=") ||
+          c.startsWith("userID=") ||
+          c.startsWith("userid=")
+      );
     let userId: string | null = null;
     if (match) {
       const parts = match.split("=");
@@ -52,6 +68,18 @@ const UserTracker = () => {
 
     // store userId in redux
     if (userId) {
+      (async () => {
+        try {
+          await fetch(CREATE_USER_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userid: userId }),
+          });
+        } catch (err) {
+          // ignore network errors for now; record will be created when backend receives later requests
+          console.warn("create-user request failed:", err);
+        }
+      })();
       dispatch(addUser(userId));
       // trigger loading messages for this user
       // try { fetchMessages(); } catch (e) { /* ignore */ }

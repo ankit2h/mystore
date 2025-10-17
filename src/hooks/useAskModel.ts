@@ -56,7 +56,7 @@ export default function useAskModel() {
       dispatch(setContext(""));
       console.log(svgid, query, response, userid);
       const res2 = await fetch(
-        "https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai/chat",
+        " https://mystore-245577333791.asia-south1.run.app/api/v1/ai/chat",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

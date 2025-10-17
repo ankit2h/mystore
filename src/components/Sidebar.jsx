@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "@fontsource/bebas-neue";
-import { ChevronDown, X, ChevronRight } from "lucide-react";
+import { X, ChevronRight } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { setSidebar } from "../redux/sideSlice";
 
@@ -27,13 +27,13 @@ const Sidebar = ({ onClose }) => {
     const fetchLinks = async () => {
       try {
         const res = await fetch(
-          "https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai/link"
+          " https://mystore-245577333791.asia-south1.run.app/api/v1/ai/link"
         );
         if (!res.ok) throw new Error("Failed to fetch links");
         const data = await res.json();
         setLinks(data);
         const res2 = await fetch(
-          "https://my-backend-app-245577333791.us-central1.run.app/api/v1/ai/front"
+          " https://mystore-245577333791.asia-south1.run.app/api/v1/ai/front"
         );
         if (!res2.ok) throw new Error("Failed to fetch links");
         const data2 = await res2.json();
@@ -95,7 +95,7 @@ const Sidebar = ({ onClose }) => {
       {/* Menu */}
       <ul className="space-y-2 px-2 flex-1 justify-center items-center">
        <div className="flex justify-center w-full">
-          <Link to={`https://home.learnest.tech`}
+          <Link to={`http://localhost:8080`}
             className="px-4 py-2 mb-7 w-40 rounded-lg bg-gradient-to-r from-[#232326] to-[#18181b] cursor-pointer transition-all duration-200 border border-transparent hover:border-indigo-500 shadow-sm"
             style={{
               boxShadow: "0 0 8px #6366f1, 0 0 16px #6366f1, 0 0 24px #6366f1", // indigo-500
@@ -156,7 +156,7 @@ const Sidebar = ({ onClose }) => {
                 </ul>
               </div>
             ) : (
-              <Link to={`/${item.name.toLowerCase().replace(/\s+/g, "-")}`}>
+              <Link to={`/tutorial/${item.name.toLowerCase().replace(/\s+/g, "-")}`}>
                 <div className="px-5 py-2 rounded-lg cursor-pointer text-gray-200 font-medium transition-all duration-200 border border-transparent hover:border-indigo-500 shadow-sm">
                   {item.name}
                 </div>
@@ -173,7 +173,7 @@ const Sidebar = ({ onClose }) => {
           <span className="block text-center">Clear it!</span>
         </span>
 
-        <Link to={`https://netflix.learnest.tech/`} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-700 text-white font-bold shadow-lg hover:from-indigo-700 hover:to-indigo-500 transition-all duration-200 border-2 border-indigo-500 hover:border-white text-lg">
+        <Link to={`http://localhost:8080/tutorial/chat`} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-700 text-white font-bold shadow-lg hover:from-indigo-700 hover:to-indigo-500 transition-all duration-200 border-2 border-indigo-500 hover:border-white text-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
