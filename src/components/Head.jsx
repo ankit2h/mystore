@@ -51,19 +51,41 @@ const Head = () => {
               style={{ minHeight: "50px" }}
             >
               {/* Logo */}
-              <Link
+              {/* <Link
                 to="/"
                 className="flex items-center justify-center h-full mr-2"
+              > */}
+                  <button
+                className="flex items-center justify-center mr-2 sm:mr-4 text-indigo-500"
+                onClick={() => dispatch(setSidebar(true))}
+                aria-label="Open sidebar"
+                style={{ fontSize: 0 }}
               >
-                <img
+                {/* SVG Hamburger Icon (no circle) */}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              </button>
+                {/* <img
                   src="/amazon-logo-2.webp"
                   width={32}
                   height={32}
                   alt="amazon-logo"
                   className="object-contain"
                   style={{ display: "block" }}
-                />
-              </Link>
+                /> */}
+              {/* </Link> */}
               {/* Search Bar */}
               <div className="flex items-center flex-1 bg-white rounded-full overflow-hidden shadow border border-[#d5d9d9] mx-1">
                 <input
@@ -122,7 +144,7 @@ const Head = () => {
               ))}
             </div>
             <div className="mr-2">
-              <h1
+              {/* <h1
                 onClick={() => {
                   useUserStore.getState().setUser(null);
                   localStorage.removeItem("user-store");
@@ -131,7 +153,13 @@ const Head = () => {
                 className="text-[#FEBD69] text-xs font-bold cursor-pointer hover:underline"
               >
                 Sign out
-              </h1>
+              </h1> */}
+               <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              <SignedIn>
+                <SignOutButton />
+              </SignedIn>
             </div>
           </div>
         </>
