@@ -56,7 +56,7 @@ const Head = () => {
                 className="flex items-center justify-center h-full mr-2"
               >
                 <img
-                  src="/amazon-logo-2.webp"
+                  src="/assets/amazon-logo-2.webp"
                   width={32}
                   height={32}
                   alt="amazon-logo"
