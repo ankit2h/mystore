@@ -54,30 +54,8 @@ const Head = () => {
               {/* <Link
                 to="/"
                 className="flex items-center justify-center h-full mr-2"
-              > */}
-                  <button
-                className="flex items-center justify-center mr-2 sm:mr-4 text-indigo-500"
-                onClick={() => dispatch(setSidebar(true))}
-                aria-label="Open sidebar"
-                style={{ fontSize: 0 }}
               >
-                {/* SVG Hamburger Icon (no circle) */}
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#FFFFFF"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              </button>
-                {/* <img
+                <img
                   src="/amazon-logo-2.webp"
                   width={32}
                   height={32}
