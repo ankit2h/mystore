@@ -14,7 +14,7 @@ const useOrderStore = create(
         try {
           set({ loading: true });
           const response = await axios.post(
-            `http://localhost:5000/api/v1/order/checkout/create-checkout-session`,
+            `https://mystore-245577333791.asia-south1.run.app/api/v1/order/checkout/create-checkout-session`,
             checkoutSession,
             {
               headers: {
@@ -33,7 +33,7 @@ const useOrderStore = create(
       getOrderDetails: async () => {
         try {
           set({ loading: true });
-          const response = await axios.get(`http://localhost:5000/api/v1/order/getOrder`);
+          const response = await axios.get(`https://mystore-245577333791.asia-south1.run.app/api/v1/order/getOrder`);
           set({ loading: false, orders: response.data.orders });
         } catch (error) {
           set({ Loading: false });

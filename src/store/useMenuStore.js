@@ -14,7 +14,7 @@ const useItemStore = create(
         try {
           set({ loading: true });
 
-          const response = await axios.post(`http://localhost:5000/api/v1/item`, formData, {
+          const response = await axios.post(`https://mystore-245577333791.asia-south1.run.app/api/v1/item`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
