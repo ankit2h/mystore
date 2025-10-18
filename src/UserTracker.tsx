@@ -21,7 +21,10 @@ function generateUUID() {
   );
 }
 
-const CREATE_USER_ENDPOINT = " https://mystore-245577333791.asia-south1.run.app/api/v1/ai/create-user"; // imaginary endpoint to create user doc
+const CREATE_USER_ENDPOINT =
+  " https://mystore-245577333791.asia-south1.run.app/api/v1/ai/create-user"; // imaginary endpoint to create user doc
+
+const CREATE_USER_ENDPOINT2 = " http://localhost:5000/api/v1/ai/create-user2";
 
 const UserTracker = () => {
   const dispatch = useDispatch();
@@ -59,6 +62,11 @@ const UserTracker = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userid: userId }),
           });
+          await fetch(CREATE_USER_ENDPOINT2, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userid: userId }),
+          });
         } catch (err) {
           // ignore network errors for now; record will be created when backend receives later requests
           console.warn("create-user request failed:", err);
@@ -71,6 +79,11 @@ const UserTracker = () => {
       (async () => {
         try {
           await fetch(CREATE_USER_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userid: userId }),
+          });
+          await fetch(CREATE_USER_ENDPOINT2, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userid: userId }),

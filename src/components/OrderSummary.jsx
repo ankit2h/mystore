@@ -1,14 +1,18 @@
 import React from "react";
 import useOrderStore from "../store/useOrderStore";
+import { useSelector } from "react-redux";
 
 const OrderSummary = ({ totalPrice, cart, deliveryDetails }) => {
+  const userid = useSelector((store) => store.sidebar.user || "");
+
   const { createCheckoutSession, loading } = useOrderStore();
   const checkoutHandler = async (e) => {
     try {
       const checkoutData = {
+        userid,
         cartItems: cart.map((cartItem) => ({
           itemId: cartItem._id,
-          name: cartItem.name || "name",
+          name: cartItem.title || "name",
           image: cartItem.image,
           price: cartItem.price.toString(),
           quantity: cartItem.quantity.toString(),
@@ -30,7 +34,9 @@ const OrderSummary = ({ totalPrice, cart, deliveryDetails }) => {
   return (
     <div className="border border-gray-200 rounded-lg shadow-lg bg-white p-6 mt-6 h-fit w-full max-w-sm mx-auto">
       <div>
-        <h1 className="font-semibold text-xl mb-6 text-[#111] tracking-tight">Order Summary</h1>
+        <h1 className="font-semibold text-xl mb-6 text-[#111] tracking-tight">
+          Order Summary
+        </h1>
         <div className="text-sm">
           <div className="flex items-center justify-between mb-1">
             <span>Items ({itemCount})</span>

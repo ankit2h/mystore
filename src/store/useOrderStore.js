@@ -41,7 +41,7 @@ const useOrderStore = create(
       },
     }),
     {
-      name: "ordr-name",
+      name: "o-nme",
       storage: createJSONStorage(() => localStorage),
     }
   )
