@@ -40,7 +40,7 @@ export const useDatabase = () => {
   const getCategoryProduct = async (category) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/v1/item/getCategoryProduct/${category}`
+        `https://mystore-245577333791.asia-south1.run.app/api/v1/item/getCategoryProduct/${category}`
       );
       const data = await res.json();
       if (data.success) {
