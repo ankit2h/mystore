@@ -7,14 +7,14 @@ import { useDispatch } from "react-redux";
 
 const category = [
   "Electronics",
-  "Clothing",
-  "Home & Garden",
-  "Sports & Outdoors",
-  "Books",
-  "Food & Beverages",
-  "Toys & Games",
-  "Automotive",
-  "Beauty & Health",
+  "Men's clothing",
+  "Women's clothing",
+  "Jewelery",
+  // "Books",
+  // "Food & Beverages",
+  // "Toys & Games",
+  // "Automotive",
+  // "Beauty & Health",
 ];
 
 const HomePage = () => {

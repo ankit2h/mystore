@@ -40,7 +40,7 @@ export const useDatabase = () => {
   const getCategoryProduct = async (category) => {
     try {
       const res = await fetch(
-        `${envEndpoint}/api/v1/item/getCategoryProduct/${category}`
+        `http://localhost:5000/api/v1/item/getCategoryProduct/${category}`
       );
       const data = await res.json();
       if (data.success) {
